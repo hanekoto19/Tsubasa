@@ -59,6 +59,64 @@ function movesOf(p) {
   return [p.weapon1, p.weapon2, p.weapon3, p.weapon4].map((no) => getMoveByNo(no)).filter(Boolean);
 }
 
+// --- 実数値計算(種族値・努力値・性格補正・個体値・レベルから算出) ---
+// 計算式はユーザー提示のもの。bfpokedata の nA〜nS はそのまま「性格補正コード」
+// (9=0.9倍/10=1.0倍/11=1.1倍)として使われていることをデータから確認済み。
+// なので別途「性格名→補正表」を作らず、bfpokedataの値をそのまま使う。
+
+function calcRealStat(base, iv, ev, level, natureMod) {
+  const core = Math.floor((base * 2 + iv + Math.floor(ev / 4)) * level / 100);
+  return Math.floor((core + 5) * natureMod / 10);
+}
+
+function calcRealHp(base, iv, ev, level) {
+  if (base === 1) return 1; // ヌケニン等、種族値Hが1のポケモンはHP実数値が常に1固定
+  const core = Math.floor((base * 2 + iv + Math.floor(ev / 4)) * level / 100);
+  return core + level + 10;
+}
+
+function computeRealStats(p, level, iv) {
+  return {
+    H: calcRealHp(p.shH, iv, p.dH, level),
+    A: calcRealStat(p.shA, iv, p.dA, level, p.nA),
+    B: calcRealStat(p.shB, iv, p.dB, level, p.nB),
+    C: calcRealStat(p.shC, iv, p.dC, level, p.nC),
+    D: calcRealStat(p.shD, iv, p.dD, level, p.nD),
+    S: calcRealStat(p.shS, iv, p.dS, level, p.nS),
+  };
+}
+
+// 自分の個体値の選択肢: js/kota.js の実際の分岐(bfNo範囲 × Lv50/100)をそのまま再現。
+// (レンタル解放状況によって選べる個体値が変わる、という原実装の仕様に合わせる)
+function getSelfKotaOptions(bfNo, level) {
+  if (level === 100) {
+    if (bfNo >= 351 && bfNo <= 486) return [0, 16, 20, 24, 31];
+    if (bfNo >= 487 && bfNo <= 622) return [4, 16, 20, 24, 31];
+    if (bfNo >= 623 && bfNo <= 758) return [8, 16, 20, 24, 31];
+    if (bfNo >= 759 && bfNo <= 950) return [12, 16, 20, 24, 31];
+  } else if (level === 50) {
+    if (bfNo >= 1 && bfNo <= 150) return [0];
+    if (bfNo >= 151 && bfNo <= 250) return [4];
+    if (bfNo >= 251 && bfNo <= 350) return [8];
+    if (bfNo >= 351 && bfNo <= 486) return [12, 31];
+    if (bfNo >= 487 && bfNo <= 622) return [16, 31];
+    if (bfNo >= 623 && bfNo <= 758) return [20, 31];
+    if (bfNo >= 759 && bfNo <= 950) return [24, 31];
+  }
+  // Lvが50/100以外、またはbfNoが想定外の場合は全選択肢を出す
+  return [0, 4, 8, 12, 16, 20, 24, 31];
+}
+
+// 相手の個体値の選択肢: trainerdata[].kota (何人目のトレーナーかで固定される)。
+// 「ネジキ」等の施設リーダー特有のrank(9・10)は個体値が銀/金で割れるため対象外にする。
+function getOpponentKotaOptions() {
+  const map = new Map();
+  trainerdata.forEach((t) => {
+    if (t.rank >= 1 && t.rank <= 8 && !map.has(t.rank)) map.set(t.rank, t.kota);
+  });
+  return Array.from(map.entries()).sort((a, b) => a[0] - b[0]);
+}
+
 function typeBadge(typeName) {
   if (!typeName || typeName === "なし") return "";
   const color = TYPE_COLORS[typeName] || "#9aa1a8";
@@ -213,7 +271,7 @@ function renderCompareBar() {
 }
 
 const COMPARE_ROWS = [
-  { label: "全国図鑑No.", render: (p) => `No.${String(p.pokeNo).padStart(3, "0")}(データID:${p.bfNo})` },
+  { label: "全国図鑑No.", render: (p) => `No.${String(p.pokeNo).padStart(3, "0")}` },
   { label: "タイプ", render: (p) => typeBadge(p.t1) + typeBadge(p.t2) },
   {
     label: "特性",
@@ -222,10 +280,10 @@ const COMPARE_ROWS = [
   { label: "持ち物", render: (p) => escapeHtml(p.itemName || "なし") },
   { label: "性格", render: (p) => escapeHtml(p.nNAME || "-") },
   {
-    label: "技",
+    label: "技(ホバーで効果表示)",
     render: (p) =>
       movesOf(p)
-        .map((m) => `<span class="move-chip">${escapeHtml(m.name)}</span>`)
+        .map((m) => `<span class="move-chip" title="${escapeHtml(m.effect || "-")}">${escapeHtml(m.name)}</span>`)
         .join(" "),
   },
   { label: "種族値 H", render: (p) => p.shH },
@@ -297,6 +355,74 @@ function initCompareBar() {
   });
 }
 
+function renderStatCalculator(p) {
+  const defaultLevel = Number(appState.levelMode) || 50;
+  const selfOptions = getSelfKotaOptions(p.bfNo, defaultLevel);
+  const opponentOptions = getOpponentKotaOptions();
+
+  const details = document.createElement("details");
+  details.className = "stat-calc";
+
+  const summary = document.createElement("summary");
+  summary.textContent = "実数値を計算する";
+  details.appendChild(summary);
+
+  const body = document.createElement("div");
+  body.className = "stat-calc__body";
+  body.innerHTML = `
+    <div class="stat-calc__row">
+      <label>Lv: <input type="number" class="stat-calc__lv" min="1" max="100" value="${defaultLevel}" /></label>
+      <label>個体値:
+        <select class="stat-calc__iv">
+          <optgroup label="自分(レンタル解放状況)">
+            ${selfOptions.map((iv) => `<option value="${iv}">${iv}</option>`).join("")}
+          </optgroup>
+          <optgroup label="相手(何人目の対戦相手か)">
+            ${opponentOptions
+              .map(([rank, kota]) => `<option value="${kota}">${rank}人目(個体値${kota})</option>`)
+              .join("")}
+          </optgroup>
+        </select>
+      </label>
+    </div>
+    <table class="stat-calc__table">
+      <thead><tr><th>H</th><th>A</th><th>B</th><th>C</th><th>D</th><th>S</th></tr></thead>
+      <tbody><tr class="stat-calc__result"></tr></tbody>
+    </table>
+  `;
+  details.appendChild(body);
+
+  const lvInput = body.querySelector(".stat-calc__lv");
+  const ivSelect = body.querySelector(".stat-calc__iv");
+  const resultRow = body.querySelector(".stat-calc__result");
+
+  function refreshSelfOptions() {
+    const level = Number(lvInput.value);
+    const opts = getSelfKotaOptions(p.bfNo, level);
+    const optgroup = ivSelect.querySelector("optgroup");
+    optgroup.innerHTML = opts.map((iv) => `<option value="${iv}">${iv}</option>`).join("");
+  }
+
+  function recompute() {
+    const level = Math.min(100, Math.max(1, Number(lvInput.value) || 1));
+    const iv = Number(ivSelect.value) || 0;
+    const stats = computeRealStats(p, level, iv);
+    resultRow.innerHTML = ["H", "A", "B", "C", "D", "S"]
+      .map((key) => `<td>${stats[key]}</td>`)
+      .join("");
+  }
+
+  lvInput.addEventListener("input", () => {
+    refreshSelfOptions();
+    recompute();
+  });
+  ivSelect.addEventListener("change", recompute);
+
+  recompute();
+
+  return details;
+}
+
 // --- カード表示の共通生成(ポケモン検索/技逆引き/持ち物逆引き/タイプ別一覧で共用) ---
 
 function renderPokemonCard(p, options) {
@@ -316,7 +442,7 @@ function renderPokemonCard(p, options) {
   nameEl.textContent = p.NAME;
   const noEl = document.createElement("p");
   noEl.className = "poke-card__no";
-  noEl.textContent = `全国図鑑No.${String(p.pokeNo).padStart(3, "0")} / データID:${p.bfNo}`;
+  noEl.textContent = `全国図鑑No.${String(p.pokeNo).padStart(3, "0")}`;
   nameWrap.appendChild(nameEl);
   nameWrap.appendChild(noEl);
   top.appendChild(nameWrap);
@@ -345,7 +471,11 @@ function renderPokemonCard(p, options) {
   movesWrap.innerHTML = moves
     .map((m) => {
       const hit = highlightNos && highlightNos.has(m.no);
-      return `<span class="move-chip${hit ? " move-chip--hit" : ""}">${escapeHtml(m.name)}</span>`;
+      return `
+        <div class="move-row">
+          <span class="move-chip${hit ? " move-chip--hit" : ""}">${escapeHtml(m.name)}</span>
+          <span class="move-row__effect">${escapeHtml(m.effect || "-")}</span>
+        </div>`;
     })
     .join("");
   card.appendChild(movesWrap);
@@ -363,6 +493,7 @@ function renderPokemonCard(p, options) {
       </div>`;
   }).join("");
   card.appendChild(statsWrap);
+  card.appendChild(renderStatCalculator(p));
 
   const compareLabel = document.createElement("label");
   compareLabel.className = "poke-card__compare-check";
