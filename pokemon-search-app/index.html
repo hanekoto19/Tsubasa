@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>バトルファクトリー図鑑データベース｜HGSS</title>
+    <meta
+      name="description"
+      content="ポケモン ハートゴールド・ソウルシルバーのバトルファクトリー用、レンタルポケモンの名前・技・持ち物・タイプ検索データベースです。"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>バトルファクトリー図鑑データベース</h1>
+      <p class="site-header__desc">HGSS バトルファクトリーのレンタルポケモンを名前・技・持ち物・タイプで検索</p>
+    </header>
+
+    <div class="level-toggle" role="radiogroup" aria-label="レベルモード">
+      <span class="level-toggle__label">候補プール:</span>
+      <button class="level-toggle__btn is-active" data-level="50" role="radio" aria-checked="true">
+        Lv50
+      </button>
+      <button class="level-toggle__btn" data-level="100" role="radio" aria-checked="false">
+        Lv100(オープンレベル)
+      </button>
+      <span class="level-toggle__hint" id="level-toggle-hint"></span>
+    </div>
+
+    <nav class="tabs" role="tablist" aria-label="検索カテゴリ">
+      <button class="tabs__btn is-active" data-tab="pokemon" role="tab" aria-selected="true">
+        ポケモン
+      </button>
+      <button class="tabs__btn" data-tab="move" role="tab" aria-selected="false">技から探す</button>
+      <button class="tabs__btn" data-tab="item" role="tab" aria-selected="false">持ち物から探す</button>
+      <button class="tabs__btn" data-tab="type" role="tab" aria-selected="false">タイプ</button>
+      <button class="tabs__btn" data-tab="exchange" role="tab" aria-selected="false">交換診断</button>
+    </nav>
+
+    <main class="container">
+      <!-- ポケモン検索 -->
+      <section class="panel is-active" id="panel-pokemon" role="tabpanel">
+        <p class="panel-desc">
+          レンタル選出画面で出た候補を検索し、チェックボックスで複数選択すると下に比較表が表示されます。
+        </p>
+
+        <div class="compare-bar" id="compare-bar" hidden>
+          <span id="compare-bar-count"></span>
+          <button class="compare-bar__btn" id="compare-bar-scroll">比較表を見る</button>
+          <button class="compare-bar__btn compare-bar__btn--ghost" id="compare-bar-clear">選択をクリア</button>
+        </div>
+
+        <div id="compare-section"></div>
+
+        <div class="search-bar">
+          <input
+            type="search"
+            id="pokemon-search-input"
+            class="search-bar__input"
+            placeholder="ポケモン名で検索(例: フシギダネ)"
+            autocomplete="off"
+          />
+          <select id="pokemon-type-filter" class="search-bar__select">
+            <option value="">タイプで絞り込み(すべて)</option>
+          </select>
+        </div>
+        <p class="result-count" id="pokemon-result-count"></p>
+        <div class="card-grid" id="pokemon-results"></div>
+        <button class="load-more" id="pokemon-load-more" hidden>もっと見る</button>
+      </section>
+
+      <!-- 技から探す(逆引き) -->
+      <section class="panel" id="panel-move" role="tabpanel" hidden>
+        <nav class="subtabs">
+          <button class="subtabs__btn is-active" data-subtab="move-lookup">
+            技→ポケモン逆引き
+          </button>
+          <button class="subtabs__btn" data-subtab="move-dict">技図鑑(技一覧)</button>
+        </nav>
+
+        <div class="subpanel is-active" id="subpanel-move-lookup">
+          <p class="panel-desc">
+            対戦中に見えた技から、その技を持ち得るレンタルポケモンを逆引きします。ポケモン名も入れると、そのポケモンの複数セットの中から絞り込めます。
+          </p>
+          <div class="search-bar">
+            <input
+              type="search"
+              id="move-lookup-move-input"
+              class="search-bar__input"
+              placeholder="技名で検索(必須, 例: 10まんボルト)"
+              autocomplete="off"
+            />
+            <input
+              type="search"
+              id="move-lookup-poke-input"
+              class="search-bar__input"
+              placeholder="ポケモン名で絞り込み(任意, パターンB)"
+              autocomplete="off"
+            />
+          </div>
+          <p class="result-count" id="move-lookup-result-count"></p>
+          <div class="card-grid" id="move-lookup-results"></div>
+        </div>
+
+        <div class="subpanel" id="subpanel-move-dict" hidden>
+          <div class="search-bar">
+            <input
+              type="search"
+              id="move-search-input"
+              class="search-bar__input"
+              placeholder="技名で検索(例: マジカルリーフ)"
+              autocomplete="off"
+            />
+            <select id="move-type-filter" class="search-bar__select">
+              <option value="">タイプで絞り込み(すべて)</option>
+            </select>
+            <select id="move-class-filter" class="search-bar__select">
+              <option value="">分類で絞り込み(すべて)</option>
+            </select>
+          </div>
+          <p class="result-count" id="move-result-count"></p>
+          <div class="table-wrap">
+            <table class="data-table" id="move-table">
+              <thead>
+                <tr>
+                  <th>技名</th>
+                  <th>タイプ</th>
+                  <th>分類</th>
+                  <th>威力</th>
+                  <th>命中</th>
+                  <th>PP</th>
+                  <th>効果</th>
+                </tr>
+              </thead>
+              <tbody id="move-results"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 持ち物から探す(逆引き) -->
+      <section class="panel" id="panel-item" role="tabpanel" hidden>
+        <p class="panel-desc">
+          対戦中に見えた持ち物から、その持ち物を持ち得るレンタルポケモンを逆引きします。ポケモン名も入れると、そのポケモンの複数セットの中から絞り込めます。
+        </p>
+        <div class="search-bar">
+          <input
+            type="search"
+            id="item-search-input"
+            class="search-bar__input"
+            placeholder="持ち物名で検索(空欄で全件表示)"
+            autocomplete="off"
+          />
+          <input
+            type="search"
+            id="item-poke-input"
+            class="search-bar__input"
+            placeholder="ポケモン名で絞り込み(任意, パターンB)"
+            autocomplete="off"
+          />
+        </div>
+        <p class="result-count" id="item-result-count"></p>
+        <div class="card-grid card-grid--items" id="item-results"></div>
+      </section>
+
+      <!-- タイプ検索 -->
+      <section class="panel" id="panel-type" role="tabpanel" hidden>
+        <p class="panel-desc">
+          有利なタイプを探すための研究用ビューです。現在の候補プール(Lv50/Lv100)内のポケモンのみ表示します。
+        </p>
+        <div class="search-bar">
+          <select id="type-select" class="search-bar__select search-bar__select--wide">
+            <option value="">タイプを選択してください</option>
+          </select>
+        </div>
+        <div id="type-detail"></div>
+      </section>
+
+      <!-- 交換診断(v2: 自分の3匹の一時登録 + 交換候補との比較 + AI推奨コメント) -->
+      <section class="panel" id="panel-exchange" role="tabpanel" hidden>
+        <p class="panel-desc">
+          勝利後の交換判断用です。今レンタル中の3匹を一時登録すると(ブラウザを閉じたら消えます、保存はされません)、交換候補との数値比較と、AIによる自然文の推奨コメントを見られます。
+          数値比較そのものはこの画面のロジックで計算し、AIは説明文の生成のみを行います。
+        </p>
+
+        <h2 class="section-title">自分の現在の3匹(一時登録)</h2>
+        <div class="exchange-slots" id="my-team-slots"></div>
+
+        <h2 class="section-title">交換候補</h2>
+        <div class="exchange-slots exchange-slots--single" id="candidate-slot"></div>
+
+        <div id="exchange-comparison"></div>
+
+        <div class="ai-suggest">
+          <button class="ai-suggest__btn" id="ai-suggest-btn" disabled>AI診断コメントを生成する</button>
+          <p class="ai-suggest__hint">
+            ※ AI診断にはローカルサーバー側で <code>GEMINI_API_KEY</code> の設定が必要です(<code>server.py</code>参照)。数値の計算自体はAIを使わず、このページ内で行っています。
+          </p>
+          <div id="ai-suggest-result"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        データ出典:
+        <a href="https://nejiki49.github.io/" target="_blank" rel="noopener noreferrer"
+          >ネジキダメージ(バトルファクトリー ダメージ計算機)</a
+        >
+        の <code>js/data.js</code>(内容はそのまま利用しています)
+      </p>
+      <p>画像: <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a>(HGSS世代のドット絵)</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
