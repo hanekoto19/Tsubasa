@@ -11,12 +11,13 @@ from __future__ import annotations
 
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 PORT = int(os.environ.get("PORT", "8080"))
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
 GEMINI_ENDPOINT = (
     f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 )
@@ -65,21 +66,33 @@ class Handler(SimpleHTTPRequestHandler):
                 "generationConfig": {"temperature": 0.3, "maxOutputTokens": 512},
             }
         ).encode("utf-8")
-        req = urllib.request.Request(
-            f"{GEMINI_ENDPOINT}?key={api_key}",
-            data=body,
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", errors="replace")
-            self._json(502, {"error": f"Gemini APIエラー({exc.code}): {detail[:300]}"})
-            return
-        except Exception as exc:  # noqa: BLE001 - ローカル個人用サーバーなので広く捕捉
-            self._json(502, {"error": f"Gemini APIへの接続に失敗しました: {exc}"})
+        last_error = None
+        data = None
+        for attempt in range(3):
+            req = urllib.request.Request(
+                f"{GEMINI_ENDPOINT}?key={api_key}",
+                data=body,
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=90) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                last_error = None
+                break
+            except urllib.error.HTTPError as exc:
+                detail = exc.read().decode("utf-8", errors="replace")
+                last_error = f"Gemini APIエラー({exc.code}): {detail[:300]}"
+                if exc.code in (429, 503) and attempt < 2:
+                    time.sleep(2 * (attempt + 1))
+                    continue
+                self._json(502, {"error": last_error})
+                return
+            except Exception as exc:  # noqa: BLE001 - ローカル個人用サーバーなので広く捕捉
+                self._json(502, {"error": f"Gemini APIへの接続に失敗しました: {exc}"})
+                return
+        if data is None:
+            self._json(502, {"error": last_error or "Gemini APIへの接続に失敗しました。"})
             return
 
         comment = ""
