@@ -38,15 +38,6 @@ const TYPE_COLORS = {
   "？？？": "#9aa1a8",
 };
 
-const STAT_LABELS = [
-  ["shH", "H"],
-  ["shA", "A"],
-  ["shB", "B"],
-  ["shC", "C"],
-  ["shD", "D"],
-  ["shS", "S"],
-];
-const STAT_MAX_FOR_BAR = 180;
 const PAGE_SIZE = 24;
 
 // --- データ参照ヘルパー (data.js の内容はそのまま利用し、書き換えない) ---
@@ -107,13 +98,14 @@ function getSelfKotaOptions(bfNo, level) {
   return [0, 4, 8, 12, 16, 20, 24, 31];
 }
 
-// 相手の個体値の選択肢: trainerdata[].kota (何人目のトレーナーかで固定される)。
+// 相手の個体値の選択肢: trainerdata[].kota (バトルファクトリーを何周目かで固定される)。
 // 「ネジキ」等の施設リーダー特有のrank(9・10)は個体値が銀/金で割れるため対象外にする。
 function getOpponentKotaOptions() {
   const map = new Map();
   trainerdata.forEach((t) => {
     if (t.rank >= 1 && t.rank <= 8 && !map.has(t.rank)) map.set(t.rank, t.kota);
   });
+  // [周回数(lap), 個体値(kota)] のペアを周回数の昇順で返す
   return Array.from(map.entries()).sort((a, b) => a[0] - b[0]);
 }
 
@@ -377,24 +369,22 @@ function renderStatCalculator(p) {
           <optgroup label="自分(レンタル解放状況)">
             ${selfOptions.map((iv) => `<option value="${iv}">${iv}</option>`).join("")}
           </optgroup>
-          <optgroup label="相手(何人目の対戦相手か)">
+          <optgroup label="相手(バトルファクトリー周回数)">
             ${opponentOptions
-              .map(([rank, kota]) => `<option value="${kota}">${rank}人目(個体値${kota})</option>`)
+              .map(([lap, kota]) => `<option value="${kota}">${lap}周目(個体値${kota})</option>`)
               .join("")}
           </optgroup>
         </select>
       </label>
     </div>
-    <table class="stat-calc__table">
-      <thead><tr><th>H</th><th>A</th><th>B</th><th>C</th><th>D</th><th>S</th></tr></thead>
-      <tbody><tr class="stat-calc__result"></tr></tbody>
-    </table>
+    <div class="stat-calc__labels">H&nbsp;-&nbsp;A&nbsp;-&nbsp;B&nbsp;-&nbsp;C&nbsp;-&nbsp;D&nbsp;-&nbsp;S</div>
+    <div class="stat-calc__result-line"></div>
   `;
   details.appendChild(body);
 
   const lvInput = body.querySelector(".stat-calc__lv");
   const ivSelect = body.querySelector(".stat-calc__iv");
-  const resultRow = body.querySelector(".stat-calc__result");
+  const resultLine = body.querySelector(".stat-calc__result-line");
 
   function refreshSelfOptions() {
     const level = Number(lvInput.value);
@@ -407,9 +397,8 @@ function renderStatCalculator(p) {
     const level = Math.min(100, Math.max(1, Number(lvInput.value) || 1));
     const iv = Number(ivSelect.value) || 0;
     const stats = computeRealStats(p, level, iv);
-    resultRow.innerHTML = ["H", "A", "B", "C", "D", "S"]
-      .map((key) => `<td>${stats[key]}</td>`)
-      .join("");
+    // my_status.js と同じ「H-A-B-C-D-S」ハイフン区切りの実数値表示形式
+    resultLine.textContent = ["H", "A", "B", "C", "D", "S"].map((key) => stats[key]).join("-");
   }
 
   lvInput.addEventListener("input", () => {
@@ -480,19 +469,7 @@ function renderPokemonCard(p, options) {
     .join("");
   card.appendChild(movesWrap);
 
-  const statsWrap = document.createElement("div");
-  statsWrap.className = "stat-bars";
-  statsWrap.innerHTML = STAT_LABELS.map(([key, label]) => {
-    const value = p[key] || 0;
-    const pct = Math.min(100, (value / STAT_MAX_FOR_BAR) * 100);
-    return `
-      <div class="stat-bar-row">
-        <span>${label}</span>
-        <span class="stat-bar-track"><span class="stat-bar-fill" style="width:${pct}%"></span></span>
-        <span>${value}</span>
-      </div>`;
-  }).join("");
-  card.appendChild(statsWrap);
+  // 種族値の生の数値は表示しない(my_status.js と同様、実数値のみを表示する)
   card.appendChild(renderStatCalculator(p));
 
   const compareLabel = document.createElement("label");
