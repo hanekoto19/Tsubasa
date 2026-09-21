@@ -608,3 +608,131 @@ body {
   font-weight: 700;
   margin: 1.25rem 0 0.6rem;
 }
+
+.poke-card__register-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.poke-card__register-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.poke-card__register-btn--accent {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.exchange-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.exchange-slots--single {
+  grid-template-columns: minmax(220px, 360px);
+}
+
+.slot-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 0.9rem;
+}
+
+.slot-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.slot-card__empty {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  margin: 0.6rem 0 0;
+}
+
+.slot-card__body {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0.7rem 0;
+}
+
+.slot-suggest {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.4rem;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.slot-suggest__item {
+  text-align: left;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 8px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.swap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.swap-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.swap-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+.ai-suggest {
+  margin-top: 1.5rem;
+}
+
+.ai-suggest__btn {
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ai-suggest__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ai-suggest__hint {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.ai-suggest__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1rem 1.1rem;
+  white-space: normal;
+}

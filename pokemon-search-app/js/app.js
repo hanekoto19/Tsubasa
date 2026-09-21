@@ -12,7 +12,8 @@
  *  - 技/持ち物の逆引き(パターンA: 単独検索 / パターンB: ポケモン名併用で絞り込み)
  *  - タイプ別の候補一覧(現在の候補プール内)
  *  - 画像は PokéAPI から HGSS当時のドット絵を取得
- *  - trainerdata / trainerList は使用しない
+ *  - 交換診断(v2): 自分の3匹の一時登録・実数値/タイプ相性の自動比較・Gemini説明文
+ *  - trainerdata はトレーナー予測には使わず、kota(相手個体値)と交換診断の入力にのみ利用
  */
 
 const TYPE_COLORS = {
@@ -482,6 +483,22 @@ function renderPokemonCard(p, options) {
   compareLabel.appendChild(document.createTextNode("比較に追加"));
   card.appendChild(compareLabel);
 
+  const registerRow = document.createElement("div");
+  registerRow.className = "poke-card__register-row";
+  const toTeamBtn = document.createElement("button");
+  toTeamBtn.type = "button";
+  toTeamBtn.className = "poke-card__register-btn";
+  toTeamBtn.textContent = "自分の3匹に登録";
+  toTeamBtn.addEventListener("click", () => registerToMyTeam(p));
+  const toCandBtn = document.createElement("button");
+  toCandBtn.type = "button";
+  toCandBtn.className = "poke-card__register-btn poke-card__register-btn--accent";
+  toCandBtn.textContent = "交換候補にする";
+  toCandBtn.addEventListener("click", () => registerAsCandidate(p));
+  registerRow.appendChild(toTeamBtn);
+  registerRow.appendChild(toCandBtn);
+  card.appendChild(registerRow);
+
   return card;
 }
 
@@ -865,6 +882,7 @@ function initLevelToggle() {
       renderMoveLookupResults();
       renderItemResults();
       if (currentTypeSelection) renderTypeDetail(currentTypeSelection);
+      renderExchangePanel();
     });
   });
 }
@@ -889,6 +907,354 @@ function initTabs() {
   });
 }
 
+// --- 交換診断(v2: 3匹一時登録 + 数値比較 + Gemini説明文) ---
+// 登録内容はメモリ上のみ(タブを閉じたら消える)。永続化しない。
+
+const exchangeState = {
+  team: [null, null, null],
+  candidate: null,
+};
+
+function getIncomingMultiplier(attackerType, p) {
+  const row = typeChart.find((r) => r.type === attackerType);
+  if (!row) return 1;
+  const m1 = row[p.t1] !== undefined ? row[p.t1] : 1;
+  const m2 = p.t2 && p.t2 !== "なし" && row[p.t2] !== undefined ? row[p.t2] : 1;
+  return m1 * m2;
+}
+
+function summarizeMemberMatchups(p) {
+  const weaknesses = [];
+  const resistances = [];
+  const immunities = [];
+  getUsableTypeNames().forEach((atk) => {
+    const m = getIncomingMultiplier(atk, p);
+    if (m === 0) immunities.push({ type: atk, mult: m });
+    else if (m >= 2) weaknesses.push({ type: atk, mult: m });
+    else if (m <= 0.5) resistances.push({ type: atk, mult: m });
+  });
+  return { weaknesses, resistances, immunities };
+}
+
+function summarizeTeamMatchups(members) {
+  const holes = [];
+  const sharedWeak = [];
+  const resists = [];
+  const immunities = [];
+  getUsableTypeNames().forEach((atk) => {
+    const mults = members.map((p) => getIncomingMultiplier(atk, p));
+    const min = Math.min.apply(null, mults);
+    if (min >= 2) holes.push({ type: atk, min, mults });
+    if (mults.every((m) => m >= 2)) sharedWeak.push({ type: atk, mults });
+    if (mults.some((m) => m > 0 && m <= 0.5)) resists.push(atk);
+    if (mults.some((m) => m === 0)) immunities.push(atk);
+  });
+  return { holes, sharedWeak, resists, immunities };
+}
+
+function getOffensiveCoverage(members) {
+  const stab = new Set();
+  members.forEach((p) => {
+    if (p.t1 && p.t1 !== "なし") stab.add(p.t1);
+    if (p.t2 && p.t2 !== "なし") stab.add(p.t2);
+  });
+  const superEffective = [];
+  getUsableTypeNames().forEach((def) => {
+    let best = 0;
+    let bestAtk = "";
+    stab.forEach((atk) => {
+      const row = typeChart.find((r) => r.type === atk);
+      const m = row && row[def] !== undefined ? row[def] : 1;
+      if (m > best) {
+        best = m;
+        bestAtk = atk;
+      }
+    });
+    if (best >= 2) superEffective.push({ type: def, mult: best, by: bestAtk });
+  });
+  return { stab: Array.from(stab), superEffective };
+}
+
+function defaultIvFor(p) {
+  const opts = getSelfKotaOptions(p.bfNo, Number(appState.levelMode) || 50);
+  return opts.indexOf(31) !== -1 ? 31 : opts[opts.length - 1];
+}
+
+function memberSnapshot(p) {
+  const level = Number(appState.levelMode) || 50;
+  const iv = defaultIvFor(p);
+  const stats = computeRealStats(p, level, iv);
+  const matchups = summarizeMemberMatchups(p);
+  return {
+    bfNo: p.bfNo,
+    name: p.NAME,
+    pokeNo: p.pokeNo,
+    types: [p.t1, p.t2].filter((t) => t && t !== "なし"),
+    item: p.itemName || "なし",
+    nature: p.nNAME || "-",
+    abilities: [p.tokusei1, p.tokusei2].filter((a) => a && a !== "なし"),
+    moves: movesOf(p).map((m) => m.name),
+    level,
+    iv,
+    stats,
+    weaknesses: matchups.weaknesses,
+    resistances: matchups.resistances,
+    immunities: matchups.immunities,
+  };
+}
+
+function buildComparisonPayload() {
+  const team = exchangeState.team.filter(Boolean);
+  const candidate = exchangeState.candidate;
+  if (team.length !== 3 || !candidate) return null;
+
+  const teamSnaps = team.map(memberSnapshot);
+  const candSnap = memberSnapshot(candidate);
+  const before = summarizeTeamMatchups(team);
+  const beforeOff = getOffensiveCoverage(team);
+
+  const swaps = team.map((member, idx) => {
+    const afterTeam = team.map((m, i) => (i === idx ? candidate : m));
+    const after = summarizeTeamMatchups(afterTeam);
+    const afterOff = getOffensiveCoverage(afterTeam);
+    return {
+      replaceIndex: idx,
+      replaceName: member.NAME,
+      holesBefore: before.holes.map((h) => h.type),
+      holesAfter: after.holes.map((h) => h.type),
+      holesAdded: after.holes.filter((h) => before.holes.every((b) => b.type !== h.type)).map((h) => h.type),
+      holesRemoved: before.holes.filter((h) => after.holes.every((a) => a.type !== h.type)).map((h) => h.type),
+      stabBefore: beforeOff.stab,
+      stabAfter: afterOff.stab,
+    };
+  });
+
+  return {
+    level: Number(appState.levelMode) || 50,
+    team: teamSnaps,
+    candidate: candSnap,
+    teamHoles: before.holes.map((h) => ({ type: h.type, min: h.min })),
+    teamSharedWeak: before.sharedWeak.map((h) => h.type),
+    teamResists: before.resists,
+    teamImmunities: before.immunities,
+    offensive: beforeOff,
+    swaps,
+  };
+}
+
+function registerToMyTeam(p) {
+  const empty = exchangeState.team.findIndex((slot) => slot === null);
+  if (empty === -1) {
+    window.alert("自分の3匹はすでに埋まっています。交換診断タブで枠を解除してから登録してください。");
+    return;
+  }
+  exchangeState.team[empty] = p;
+  renderExchangePanel();
+}
+
+function registerAsCandidate(p) {
+  exchangeState.candidate = p;
+  renderExchangePanel();
+}
+
+function setSlotFromSearch(kind, index, bfNo) {
+  const found = bfpokedata.find((p) => p.bfNo === Number(bfNo));
+  if (!found) return;
+  if (kind === "team") exchangeState.team[index] = found;
+  else exchangeState.candidate = found;
+  renderExchangePanel();
+}
+
+function clearSlot(kind, index) {
+  if (kind === "team") exchangeState.team[index] = null;
+  else exchangeState.candidate = null;
+  renderExchangePanel();
+}
+
+function renderSlotCard(kind, index, member) {
+  const wrap = document.createElement("article");
+  wrap.className = "slot-card";
+
+  const title = document.createElement("h3");
+  title.className = "slot-card__title";
+  title.textContent = kind === "team" ? `枠${index + 1}` : "交換候補";
+  wrap.appendChild(title);
+
+  const search = document.createElement("input");
+  search.type = "search";
+  search.className = "search-bar__input";
+  search.placeholder = "名前で検索して登録";
+  search.autocomplete = "off";
+  wrap.appendChild(search);
+
+  const suggest = document.createElement("div");
+  suggest.className = "slot-suggest";
+  wrap.appendChild(suggest);
+
+  search.addEventListener("input", () => {
+    const q = search.value.trim();
+    suggest.innerHTML = "";
+    if (!q) return;
+    const hits = getCandidateBfData()
+      .filter((p) => textIncludes(p.NAME, q))
+      .slice(0, 12);
+    hits.forEach((p) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "slot-suggest__item";
+      btn.textContent = `${p.NAME} / ${p.itemName || "なし"} / ${p.nNAME}`;
+      btn.addEventListener("click", () => setSlotFromSearch(kind, index, p.bfNo));
+      suggest.appendChild(btn);
+    });
+  });
+
+  if (member) {
+    const body = document.createElement("div");
+    body.className = "slot-card__body";
+    body.appendChild(makeSpriteWrapEl(member.pokeNo, member.NAME));
+    const info = document.createElement("div");
+    const level = Number(appState.levelMode) || 50;
+    const stats = computeRealStats(member, level, defaultIvFor(member));
+    info.innerHTML = `
+      <p class="poke-card__name">${escapeHtml(member.NAME)}</p>
+      <div class="type-badges">${typeBadge(member.t1)}${typeBadge(member.t2)}</div>
+      <p class="poke-card__meta">${escapeHtml(member.itemName || "なし")} / ${escapeHtml(member.nNAME || "-")}</p>
+      <p class="stat-calc__result-line">${["H", "A", "B", "C", "D", "S"].map((k) => stats[k]).join("-")}</p>
+    `;
+    body.appendChild(info);
+    wrap.appendChild(body);
+    const clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.className = "compare-bar__btn compare-bar__btn--ghost";
+    clearBtn.textContent = "解除";
+    clearBtn.addEventListener("click", () => clearSlot(kind, index));
+    wrap.appendChild(clearBtn);
+  } else {
+    const empty = document.createElement("p");
+    empty.className = "slot-card__empty";
+    empty.textContent = "未登録(カードの「登録」ボタンか、上の検索から選べます)";
+    wrap.appendChild(empty);
+  }
+
+  return wrap;
+}
+
+function renderExchangeComparison() {
+  const el = document.getElementById("exchange-comparison");
+  const payload = buildComparisonPayload();
+  const aiBtn = document.getElementById("ai-suggest-btn");
+  if (!payload) {
+    el.innerHTML =
+      '<p class="empty-state">自分の3匹と交換候補をすべて登録すると、種族値(実数値)とタイプ相性の自動比較が表示されます。</p>';
+    aiBtn.disabled = true;
+    return;
+  }
+  aiBtn.disabled = false;
+
+  const teamStatsRows = ["H", "A", "B", "C", "D", "S"]
+    .map((key) => {
+      const cells = payload.team
+        .map((m) => `<td>${m.stats[key]}</td>`)
+        .join("");
+      return `<tr><th class="compare-table__row-label">${key}</th>${cells}<td>${payload.candidate.stats[key]}</td></tr>`;
+    })
+    .join("");
+
+  const swapHtml = payload.swaps
+    .map((s, i) => {
+      const removed = s.holesRemoved.length ? s.holesRemoved.map((t) => typeBadge(t)).join(" ") : "なし";
+      const added = s.holesAdded.length ? s.holesAdded.map((t) => typeBadge(t)).join(" ") : "なし";
+      return `
+        <article class="swap-card">
+          <h3>枠${i + 1}(${escapeHtml(s.replaceName)})と交換した場合</h3>
+          <p>埋まる穴(被弾2倍以上がパーティから消えるタイプ): ${removed}</p>
+          <p>新たに開く穴: ${added}</p>
+        </article>`;
+    })
+    .join("");
+
+  el.innerHTML = `
+    <h2 class="section-title">自動比較(数値はロジック側で算出)</h2>
+    <p class="panel-desc">実数値は現在のLv${payload.level}・自分側の個体値選択肢の最大値で計算しています。</p>
+    <div class="compare-section">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="compare-table__row-label"></th>
+            ${payload.team.map((m, i) => `<th>枠${i + 1}<br>${escapeHtml(m.name)}</th>`).join("")}
+            <th>交換候補<br>${escapeHtml(payload.candidate.name)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="compare-table__row-label">タイプ</th>
+            ${payload.team.map((m) => `<td>${m.types.map(typeBadge).join("")}</td>`).join("")}
+            <td>${payload.candidate.types.map(typeBadge).join("")}</td>
+          </tr>
+          ${teamStatsRows}
+        </tbody>
+      </table>
+    </div>
+    <h3 class="section-title">現在の3匹のタイプ相性</h3>
+    <p>パーティの穴(どのメンバーも耐性を持てない、被弾2倍以上): ${
+      payload.teamHoles.length ? payload.teamHoles.map((h) => typeBadge(h.type)).join(" ") : "なし"
+    }</p>
+    <p>3匹全員の弱点: ${payload.teamSharedWeak.length ? payload.teamSharedWeak.map(typeBadge).join(" ") : "なし"}</p>
+    <p>誰かが耐性を持つタイプ: ${payload.teamResists.length ? payload.teamResists.map(typeBadge).join(" ") : "なし"}</p>
+    <p>誰かが無効にできるタイプ: ${
+      payload.teamImmunities.length ? payload.teamImmunities.map(typeBadge).join(" ") : "なし"
+    }</p>
+    <p>現在の3匹のタイプ(攻撃側の一致): ${payload.offensive.stab.map(typeBadge).join(" ") || "なし"}</p>
+    <h3 class="section-title">交換した場合の穴の変化</h3>
+    <div class="swap-grid">${swapHtml}</div>
+  `;
+}
+
+function renderExchangePanel() {
+  const teamEl = document.getElementById("my-team-slots");
+  const candEl = document.getElementById("candidate-slot");
+  if (!teamEl || !candEl) return;
+  teamEl.innerHTML = "";
+  exchangeState.team.forEach((member, i) => teamEl.appendChild(renderSlotCard("team", i, member)));
+  candEl.innerHTML = "";
+  candEl.appendChild(renderSlotCard("candidate", 0, exchangeState.candidate));
+  renderExchangeComparison();
+}
+
+async function requestAiComment() {
+  const payload = buildComparisonPayload();
+  const resultEl = document.getElementById("ai-suggest-result");
+  const btn = document.getElementById("ai-suggest-btn");
+  if (!payload) return;
+  btn.disabled = true;
+  resultEl.innerHTML = "<p>診断コメントを生成しています...</p>";
+  try {
+    const res = await fetch("/api/gemini-suggest", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      resultEl.innerHTML = `<p class="empty-state">${escapeHtml(
+        data.error || "AI診断に失敗しました。server.py 経由で起動し、GEMINI_API_KEY を設定してください。"
+      )}</p>`;
+      return;
+    }
+    resultEl.innerHTML = `<article class="ai-suggest__card">${escapeHtml(data.comment).replace(/\n/g, "<br>")}</article>`;
+  } catch (err) {
+    resultEl.innerHTML =
+      '<p class="empty-state">サーバーに接続できませんでした。`python3 server.py` で起動しているか確認してください。</p>';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function initExchangePanel() {
+  renderExchangePanel();
+  document.getElementById("ai-suggest-btn").addEventListener("click", requestAiComment);
+}
+
 // --- 初期化 ---
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -901,4 +1267,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initMoveDictPanel();
   initItemPanel();
   initTypePanel();
+  initExchangePanel();
 });

@@ -34,6 +34,7 @@
       <button class="tabs__btn" data-tab="move" role="tab" aria-selected="false">技から探す</button>
       <button class="tabs__btn" data-tab="item" role="tab" aria-selected="false">持ち物から探す</button>
       <button class="tabs__btn" data-tab="type" role="tab" aria-selected="false">タイプ</button>
+      <button class="tabs__btn" data-tab="exchange" role="tab" aria-selected="false">交換診断</button>
     </nav>
 
     <main class="container">
@@ -173,6 +174,30 @@
           </select>
         </div>
         <div id="type-detail"></div>
+      </section>
+
+      <!-- 交換診断(v2: 自分の3匹の一時登録 + 交換候補との比較 + AI推奨コメント) -->
+      <section class="panel" id="panel-exchange" role="tabpanel" hidden>
+        <p class="panel-desc">
+          勝利後の交換判断用です。今レンタル中の3匹を一時登録すると(ブラウザを閉じたら消えます、保存はされません)、交換候補との数値比較と、AIによる自然文の推奨コメントを見られます。
+          数値比較そのものはこの画面のロジックで計算し、AIは説明文の生成のみを行います。
+        </p>
+
+        <h2 class="section-title">自分の現在の3匹(一時登録)</h2>
+        <div class="exchange-slots" id="my-team-slots"></div>
+
+        <h2 class="section-title">交換候補</h2>
+        <div class="exchange-slots exchange-slots--single" id="candidate-slot"></div>
+
+        <div id="exchange-comparison"></div>
+
+        <div class="ai-suggest">
+          <button class="ai-suggest__btn" id="ai-suggest-btn" disabled>AI診断コメントを生成する</button>
+          <p class="ai-suggest__hint">
+            ※ AI診断にはローカルサーバー側で <code>GEMINI_API_KEY</code> の設定が必要です(<code>server.py</code>参照)。数値の計算自体はAIを使わず、このページ内で行っています。
+          </p>
+          <div id="ai-suggest-result"></div>
+        </div>
       </section>
     </main>
 
