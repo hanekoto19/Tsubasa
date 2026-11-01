@@ -1,0 +1,654 @@
+[
+  {
+    "id": "ancestor",
+    "type": "race",
+    "name_ja": "アンセスター",
+    "name_en": "Ancestor",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All Ancestor pieces steal (50 + 2% of max HP) HP every 5 seconds from the nearest enemy to heal themselves.",
+      "All allies gain the effect: Whenever total healing received exceeds 100, nearby enemies take pure damage equal to the total healing received. Damage dealt has a single-instance cap of 300 and a 5-second CD."
+    ]
+  },
+  {
+    "id": "beast",
+    "type": "race",
+    "name_ja": "ビースト",
+    "name_en": "Beast",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4,
+      6
+    ],
+    "tier_scores": [
+      10,
+      28,
+      54
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allies have +15% attack damage, including summoned units",
+      "All allies have +30% attack damage, including summoned units",
+      "Increases 30% ATK for all allies, including the summoned. The enemy will take 16 extra Physical Damage when attacked by an ally who benefits from the Beast Synergy, this effect can be stacked"
+    ]
+  },
+  {
+    "id": "cave",
+    "type": "race",
+    "name_ja": "ケイブ",
+    "name_en": "Cave",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4,
+      6
+    ],
+    "tier_scores": [
+      10,
+      28,
+      54
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allies +100 max HP",
+      "All allies +350 max HP",
+      "All allies +350 HP. Ally HP is boosted equal to 700x the percentage of the chess player’s missing HP"
+    ]
+  },
+  {
+    "id": "civet",
+    "type": "race",
+    "name_ja": "シベット",
+    "name_en": "Civet",
+    "name_ja_verified": false,
+    "thresholds": [
+      1
+    ],
+    "tier_scores": [
+      10
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "Creates a duplicate when a Civet piece ranks up to 3 stars. When battle starts each round, if two identical pieces exist on the board, summons a Golem copy with 100% damage ability for each couple of identical pieces."
+    ]
+  },
+  {
+    "id": "demon",
+    "type": "race",
+    "name_ja": "悪魔",
+    "name_en": "Demon",
+    "name_ja_verified": true,
+    "thresholds": [
+      1
+    ],
+    "tier_scores": [
+      10
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "Attack deals 50% extra pure damage to the target. Active when only one kind of Hunter demon on the chessboard"
+    ]
+  },
+  {
+    "id": "divinity",
+    "type": "race",
+    "name_ja": "神",
+    "name_en": "Divinity",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "Reduces Ability CD by 40% for all allied Divinities and other allies whose Race's synergies are not triggered.",
+      "Reduces Ability CD by 60% for all allied Divinities and other allies whose Race's synergies are not triggered."
+    ]
+  },
+  {
+    "id": "dragon",
+    "type": "race",
+    "name_ja": "ドラゴン",
+    "name_en": "Dragon",
+    "name_ja_verified": false,
+    "thresholds": [
+      3,
+      5
+    ],
+    "tier_scores": [
+      15,
+      35
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "At the start of the battle, 3 allied Dragons have 100 mana. (When there are more than 3 allied Dragons on the Chessboard, those deployed on the relative left will get the effects in priority.)",
+      "At the start of the battle, 5 Allies have 100 mana. (When there are more than 5 allies on the Chessboard, those deployed on the relative left will get the effects in priority.)"
+    ]
+  },
+  {
+    "id": "dwarf",
+    "type": "race",
+    "name_ja": "ドワーフ",
+    "name_en": "Dwarf",
+    "name_ja_verified": false,
+    "thresholds": [
+      2
+    ],
+    "tier_scores": [
+      10
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "Increases all ranged allies' attack range by 2 grids and deals extra damage equals to the number of grids between the two sides * 5%, giving priority to the enemy with the lowest HP within the attack range."
+    ]
+  },
+  {
+    "id": "egersis",
+    "type": "race",
+    "name_ja": "エガーシス",
+    "name_en": "Egersis",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4,
+      6
+    ],
+    "tier_scores": [
+      10,
+      28,
+      54
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All enemy -4 armor",
+      "All enemy -8 armor",
+      "All enemy -12 armor,If a unit is killed by these enemies, it will continue to fight for 3.5s seconds. (it won't receive normal attacks, nor can it be chosen by allies' abilities or cast abilities during the period)"
+    ]
+  },
+  {
+    "id": "feathered",
+    "type": "race",
+    "name_ja": "ウイングス",
+    "name_en": "Feathered",
+    "name_ja_verified": true,
+    "thresholds": [
+      3,
+      6,
+      9
+    ],
+    "tier_scores": [
+      15,
+      42,
+      81
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied Feathered have 20% chance of evasion",
+      "All allied Feathered gain a 40% chance to evade attacks, and other Allies gain a 20% chance to evade attacks",
+      "All allied Feathered gain a 60% chance to evade attacks, and other Allies gain a 44% chance to evade attacks.Once successfully evade, the ally creates an illusion for 7s."
+    ]
+  },
+  {
+    "id": "glacier",
+    "type": "race",
+    "name_ja": "グレーシャー",
+    "name_en": "Glacier",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied Glacier attack speed +20%",
+      "Increase all allied pieces ATK Speed by 50%; Each attack grants them an extra stack of 8% ATK Speed bonus, up to 15 stacks"
+    ]
+  },
+  {
+    "id": "goblin",
+    "type": "race",
+    "name_ja": "ゴブリン",
+    "name_en": "Goblin",
+    "name_ja_verified": false,
+    "thresholds": [
+      3,
+      6
+    ],
+    "tier_scores": [
+      15,
+      42
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "Random allied unit armor +15, HP Regeneration +15",
+      "All allied armor +15, HP Regeneration +15"
+    ]
+  },
+  {
+    "id": "horn",
+    "type": "race",
+    "name_ja": "ホーン",
+    "name_en": "Horn",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "Summons a Horn Totem (HP equals to total enemy pieces*3) when battle starts;",
+      "Summons a Horn Totem (HP equals to total enemy pieces*3), a Sunchaser Totem (HP equals to total enemy pieces*1), and a Skydome Totem (HP equals to total enemy pieces*1) when battle starts. Horn Totem: will be targeted first when within enemy attack range. Sunchaser Totem: Causes all enemy units to have a 10% chance of taking 250 physical damage and being disarmed for 2 seconds after each normal attack. Skydome Totem: Causes all enemy units to have a 50% chance to take 500 magical damage and be silenced for 5 seconds after each ability cast. Totem cannot move, attack or restore HP. Receives only 1 melee attack damage or 2 ranged attack damage each time."
+    ]
+  },
+  {
+    "id": "human",
+    "type": "race",
+    "name_ja": "ヒューマン",
+    "name_en": "Human",
+    "name_ja_verified": true,
+    "thresholds": [
+      3,
+      6
+    ],
+    "tier_scores": [
+      15,
+      42
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "After winning a battle against another player, if at least one ally Human survives, gets EXP Book x1",
+      "After winning a battle against another player, if at least one ally Human survives, gets EXP Book x4"
+    ]
+  },
+  {
+    "id": "insectoid",
+    "type": "race",
+    "name_ja": "インセクトイド",
+    "name_en": "Insectoid",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "When there are duplicate non-Insectoid allied pieces on the chessboard and one of them dies, summons a random insectoid piece based on the highest cost among the living duplicates.",
+      "When there are duplicate non-Insectoid allied pieces on the chessboard and one of them dies, summons a random insectoid piece based on the highest cost among the living duplicates."
+    ]
+  },
+  {
+    "id": "kira",
+    "type": "race",
+    "name_ja": "キラ",
+    "name_en": "Kira",
+    "name_ja_verified": false,
+    "thresholds": [
+      2
+    ],
+    "tier_scores": [
+      10
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "If any allied melee pieces die, increases current HP by 20%, ATK by 20% for all allied Kiras, can be stacked 6 times"
+    ]
+  },
+  {
+    "id": "marine",
+    "type": "race",
+    "name_ja": "マリーン",
+    "name_en": "Marine",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allies magical resistence +30%",
+      "All allies magical resistence +60%"
+    ]
+  },
+  {
+    "id": "night_demon",
+    "type": "race",
+    "name_ja": "ナイトデーモン",
+    "name_en": "Night Demon",
+    "name_ja_verified": false,
+    "thresholds": [
+      2
+    ],
+    "tier_scores": [
+      10
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "Ally Night Demon pieces gain the effect: If there are more than 1 enemy nearby, they will lose control due to fear. The effect of fear has a built-in CD of 6 seconds and cannot trigger consecutively."
+    ]
+  },
+  {
+    "id": "spirits",
+    "type": "race",
+    "name_ja": "スピリット",
+    "name_en": "Spirits",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied Spirits have 30% chance to turn the melee attacker into stone for 4 seconds Petrified: No Moving, No attacking, can not use skills",
+      "All allies have 50% chance to turn the melee attacker into stone for 4 seconds. Petrified: No Moving, No attacking, can not use skills"
+    ]
+  },
+  {
+    "id": "watcher",
+    "type": "race",
+    "name_ja": "ウォッチャー",
+    "name_en": "Watcher",
+    "name_ja_verified": false,
+    "thresholds": [
+      1
+    ],
+    "tier_scores": [
+      10
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "All allies gain the effect: Unit-targeted or Item abilities cast on enemies can affect +1 additional targets."
+    ]
+  },
+  {
+    "id": "assassin",
+    "type": "class",
+    "name_ja": "アサシン",
+    "name_en": "Assassin",
+    "name_ja_verified": true,
+    "thresholds": [
+      3,
+      6,
+      9
+    ],
+    "tier_scores": [
+      15,
+      42,
+      81
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied Assassins gain a 15% chance to exert 300% damage, and a 40% chance to deal 300% damages with their first Base attack in each round",
+      "All allied Assassins gain a 20% chance to exert 350% damage, and a 60% chance to deal 350% damages with their first Base attack in each round",
+      "All allied Assassins have 30% chance to deal 400% damages, and have 100% chance to deal 400% damages with their first base attack in each round"
+    ]
+  },
+  {
+    "id": "druid",
+    "type": "class",
+    "name_ja": "ドルイド",
+    "name_en": "Druid",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "Every 2 1-star Druid on the board could combined to one 2-star Druid",
+      "Every 2 2-star Druid on the board could combined to one 3-star Druid"
+    ]
+  },
+  {
+    "id": "hunter",
+    "type": "class",
+    "name_ja": "ハンター",
+    "name_en": "Hunter",
+    "name_ja_verified": false,
+    "thresholds": [
+      3,
+      6
+    ],
+    "tier_scores": [
+      15,
+      42
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied Hunters attack +35 and grants 30% chance to pierce through evasion",
+      "All allied Hunters attack +80 and grants 65% chance to pierce through evasion"
+    ]
+  },
+  {
+    "id": "knight",
+    "type": "class",
+    "name_ja": "ナイト",
+    "name_en": "Knight",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4,
+      6
+    ],
+    "tier_scores": [
+      10,
+      28,
+      54
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied Knights gain a 100% chance at the beginning of each round and then a 25% chance in every 3 seconds, to obtain a damage-reducing shield, which grants +75% Magic Resistance, +30 Armor. The shield lasts for 2 seconds.",
+      "All allied Knights gain a 100% chance at the beginning of each round and then a 48% chance in every 2 seconds, to obtain a damage-reducing shield, which grants +75% Magic Resistance, +30 Armor. The shield lasts for 2 seconds.",
+      "All allied Knights gain a 100% chance at the beginning of each round and then a 65% chance in every 2 seconds, to obtain a damage-reducing shield, which grants +75% Magic Resistance, +30 Armor. The shield lasts for 2 seconds."
+    ]
+  },
+  {
+    "id": "mage",
+    "type": "class",
+    "name_ja": "メイジ",
+    "name_en": "Mage",
+    "name_ja_verified": true,
+    "thresholds": [
+      3,
+      6,
+      9
+    ],
+    "tier_scores": [
+      15,
+      42,
+      81
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All enemy lose 40% Magical Resistence",
+      "All enemy lose 90% Magical Resistence",
+      "All enemy lose 130% Magical Resistence"
+    ]
+  },
+  {
+    "id": "mech",
+    "type": "class",
+    "name_ja": "メカ",
+    "name_en": "Mech",
+    "name_ja_verified": false,
+    "thresholds": [
+      3,
+      6
+    ],
+    "tier_scores": [
+      15,
+      42
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "After winning a battle against another player, if at least one ally Mech survives, gets Heart of Mech x1.",
+      "After winning a battle against another player, if at least one ally Mech survives, gets Golden Heart of Mech x1."
+    ]
+  },
+  {
+    "id": "priest",
+    "type": "class",
+    "name_ja": "プリースト",
+    "name_en": "Priest",
+    "name_ja_verified": false,
+    "thresholds": [
+      1,
+      2,
+      3
+    ],
+    "tier_scores": [
+      10,
+      14,
+      27
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "When the chess player receives more than 2 damage, it'll block 20% damage for the chess player",
+      "When the chessplayer receives more than 2 damage, blocks {0} damage for the chessplayer; and if the chessplayer receives more than 8 damage, gets Green Essence x1",
+      "When the chess player receives more than 2 damage, blocks 20% of damage for the chess player; when the chess player receives 8 to 14 damage, gets Green Essence x1; when the chess player receives more than 15 damage, gets Red Essence x1."
+    ]
+  },
+  {
+    "id": "shaman",
+    "type": "class",
+    "name_ja": "シャーマン",
+    "name_en": "Shaman",
+    "name_ja_verified": false,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "Change a random enemy unit into a penguin when battle starts for 6s",
+      "At the start of a battle, hexes a random enemy into penguin for 6s. And all Shamans get a buff: when killed by an enemy piece, hexes the enemy into a random chess piece of the same cost and the same star level.Possibility to turn into a random Chess Piece which costs +1 or +2 （+1:40%,+2:60%）"
+    ]
+  },
+  {
+    "id": "warlock",
+    "type": "class",
+    "name_ja": "ウォーロック",
+    "name_en": "Warlock",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4,
+      6
+    ],
+    "tier_scores": [
+      10,
+      28,
+      54
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "Grants 10% lifesteal to all allied units and its skill",
+      "Grants 30% lifesteal to all allied units and its skill",
+      "Grants 60% lifesteal to all allied units and its skill"
+    ]
+  },
+  {
+    "id": "warrior",
+    "type": "class",
+    "name_ja": "ウォリアー",
+    "name_en": "Warrior",
+    "name_ja_verified": true,
+    "thresholds": [
+      3,
+      6,
+      9
+    ],
+    "tier_scores": [
+      15,
+      42,
+      81
+    ],
+    "is_wizard_eligible": true,
+    "effects_en": [
+      "All allied warrior armor +5",
+      "All allied warrior armor +12",
+      "All allied warrior armor +18. When receiving physical or magical damage, reflects pure damage equals to the value of the recipient's Armor"
+    ]
+  },
+  {
+    "id": "witcher",
+    "type": "class",
+    "name_ja": "ウィッチャー",
+    "name_en": "Witcher",
+    "name_ja_verified": false,
+    "thresholds": [
+      1,
+      2
+    ],
+    "tier_scores": [
+      10,
+      14
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "If there's any Demon pieces on the enemy Chessboard, the Demon types will be increased by 1.",
+      "All allied demons deem to be one，The enemy demon effect is invalid"
+    ]
+  },
+  {
+    "id": "wizard",
+    "type": "class",
+    "name_ja": "ウィザード",
+    "name_en": "Wizard",
+    "name_ja_verified": true,
+    "thresholds": [
+      2,
+      4
+    ],
+    "tier_scores": [
+      10,
+      28
+    ],
+    "is_wizard_eligible": false,
+    "effects_en": [
+      "Required Pieces -1 for Synergies of Race/Class that requires 4 and above Pieces",
+      "1 less chess piece is required for activating synergy with at least 4 unique chess pieces; if there's only the synergy of one race/class is activated other than the Wizard synergy, then the highest tier of this synergy will be activated immediately"
+    ]
+  }
+]

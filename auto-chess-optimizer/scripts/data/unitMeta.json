@@ -1,1 +1,257 @@
-{}
+{
+  "hawk": {
+    "name_ja": "ホーク"
+  },
+  "unknown_horror": {
+    "name_ja": "アンノウンホラー"
+  },
+  "goddess_of_war": {
+    "name_ja": "戦女神"
+  },
+  "mist_phantom_king": {
+    "name_ja": "霧の幻王"
+  },
+  "resentful_murk": {
+    "name_ja": "怨嗟の闇"
+  },
+  "unicorn": {
+    "name_ja": "ユニコーン"
+  },
+  "ogre_mage": {
+    "name_ja": "オーガメイジ"
+  },
+  "sky_breaker": {
+    "name_ja": "スカイブレイカー"
+  },
+  "redaxe_chief": {
+    "name_ja": "赤斧の酋長"
+  },
+  "tusk_champion": {
+    "name_ja": "牙の勇者"
+  },
+  "taboo_witcher": {
+    "name_ja": "禁忌のウィッチャー"
+  },
+  "defector": {
+    "name_ja": "裏切り者"
+  },
+  "frost_knight": {
+    "name_ja": "フロストナイト"
+  },
+  "the_source": {
+    "name_ja": "ザ・ソース"
+  },
+  "egersis_ranger": {
+    "name_ja": "エガーシスレンジャー"
+  },
+  "stone_spirit": {
+    "name_ja": "石の精霊"
+  },
+  "heaven_bomber": {
+    "name_ja": "ヘブンボマー"
+  },
+  "soul_breaker": {
+    "name_ja": "ソウルブレイカー"
+  },
+  "god_of_war": {
+    "name_ja": "戦神",
+    "verified": true
+  },
+  "winter_chiropteran": {
+    "name_ja": "ウィンターキロプテラン"
+  },
+  "soul_devourer": {
+    "name_ja": "魂喰らい"
+  },
+  "goddess_of_light": {
+    "name_ja": "光の女神"
+  },
+  "light_blade": {
+    "name_ja": "ライトブレード"
+  },
+  "wisper_seer": {
+    "name_ja": "ささやきの預言者"
+  },
+  "venom": {
+    "name_ja": "ヴェノム"
+  },
+  "dwarf_sniper": {
+    "name_ja": "ドワーフスナイパー"
+  },
+  "desperate_doctor": {
+    "name_ja": "氷河の呪術医"
+  },
+  "abyssal_guard": {
+    "name_ja": "深淵の衛兵"
+  },
+  "abyssalcrawler": {
+    "name_ja": "アビサルクローラー"
+  },
+  "skull_hunter": {
+    "name_ja": "スカルハンター"
+  },
+  "swordman": {
+    "name_ja": "ソードマン"
+  },
+  "hell_knight": {
+    "name_ja": "ヘルナイト"
+  },
+  "phantom_queen": {
+    "name_ja": "ファントムクイーン"
+  },
+  "water_spirit": {
+    "name_ja": "水の精霊"
+  },
+  "ripper": {
+    "name_ja": "リッパー"
+  },
+  "shining_archer": {
+    "name_ja": "輝きの射手"
+  },
+  "penitent_bishop": {
+    "name_ja": "贖罪の司教"
+  },
+  "eclipse_of_darkness": {
+    "name_ja": "闇の蝕"
+  },
+  "qin_xuan": {
+    "name_ja": "秦玄"
+  },
+  "bobo": {
+    "name_ja": "ボボ"
+  },
+  "gem_artisan": {
+    "name_ja": "宝石職人"
+  },
+  "ghost_kid": {
+    "name_ja": "ゴーストキッド"
+  },
+  "umbra": {
+    "name_ja": "アンブラ"
+  },
+  "berserker": {
+    "name_ja": "バーサーカー"
+  },
+  "evil_knight": {
+    "name_ja": "邪悪な騎士"
+  },
+  "warpwood_sage": {
+    "name_ja": "歪木の賢者"
+  },
+  "wind_ranger": {
+    "name_ja": "ウィンドレンジャー"
+  },
+  "shadowcrawler": {
+    "name_ja": "シャドウクローラー"
+  },
+  "werewolf": {
+    "name_ja": "ウェアウルフ"
+  },
+  "argali_knight": {
+    "name_ja": "アルガリナイト"
+  },
+  "flame_wizard": {
+    "name_ja": "炎の魔術師"
+  },
+  "poisonous_worm": {
+    "name_ja": "毒虫"
+  },
+  "fallen_witcher": {
+    "name_ja": "堕落のウィッチャー"
+  },
+  "shadow_devil": {
+    "name_ja": "シャドウデビル"
+  },
+  "lord_of_sand": {
+    "name_ja": "砂の王"
+  },
+  "thunder_spirit": {
+    "name_ja": "雷の精霊"
+  },
+  "fortune_teller": {
+    "name_ja": "占い師"
+  },
+  "grand_herald": {
+    "name_ja": "グランドヘラルド"
+  },
+  "cave_prodigy": {
+    "name_ja": "洞窟の神童"
+  },
+  "thorn_predator": {
+    "name_ja": "棘の捕食者"
+  },
+  "spider_queen": {
+    "name_ja": "スパイダークイーン"
+  },
+  "shining_assassin": {
+    "name_ja": "輝きの暗殺者"
+  },
+  "razorclaw": {
+    "name_ja": "レイザークロー"
+  },
+  "dragon_knight": {
+    "name_ja": "ドラゴンナイト"
+  },
+  "siren": {
+    "name_ja": "セイレーン"
+  },
+  "storm_shaman": {
+    "name_ja": "嵐のシャーマン"
+  },
+  "venomancer": {
+    "name_ja": "ヴェノマンサー"
+  },
+  "pirate_captain": {
+    "name_ja": "海賊船長"
+  },
+  "tortola_elder": {
+    "name_ja": "トートラの長老"
+  },
+  "soul_reaper": {
+    "name_ja": "ソウルリーパー"
+  },
+  "doom_arbiter": {
+    "name_ja": "破滅の裁定者"
+  },
+  "grimtouch": {
+    "name_ja": "グリムタッチ",
+    "verified": true
+  },
+  "sacred_lancer": {
+    "name_ja": "聖槍の騎士"
+  },
+  "the_scryer": {
+    "name_ja": "予見者"
+  },
+  "frostblaze_dragon": {
+    "name_ja": "霜炎竜"
+  },
+  "strange_egg": {
+    "name_ja": "奇妙な卵"
+  },
+  "helicopter": {
+    "name_ja": "ヘリコプター"
+  },
+  "devastator": {
+    "name_ja": "デバステイター"
+  },
+  "dark_spirit": {
+    "name_ja": "闇の精霊"
+  },
+  "tsunami_stalker": {
+    "name_ja": "津波の追跡者"
+  },
+  "god_of_thunder": {
+    "name_ja": "雷神",
+    "verified": true
+  },
+  "rogue_guard": {
+    "name_ja": "ローグガード"
+  },
+  "khan": {
+    "name_ja": "カーン"
+  },
+  "penitent_bishop_mammon": {
+    "name_ja": "贖罪の司教・マモン"
+  }
+}

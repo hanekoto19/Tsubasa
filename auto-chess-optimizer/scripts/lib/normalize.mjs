@@ -26,6 +26,8 @@ export const KNOWN_RACES = [
   "Ancestor",
   "Watcher",
   "Horn",
+  "Pandaman",
+  "Greater",
 ];
 
 export const KNOWN_CLASSES = [
@@ -103,14 +105,6 @@ export const splitTraits = (raw, known) => {
   }
   for (const u of unknown) ids.push(toSnakeId(u));
   return { ids: [...new Set(ids)], unknown };
-};
-
-/** 公式サイトのコスト判定に使う。"1 Cost", "Cost 1", "cost-1", "1金币" などを想定 */
-export const parseCost = (text) => {
-  const m =
-    /(?:cost|coin|gold)[\s_-]*([1-5])\b/i.exec(text ?? "") ??
-    /\b([1-5])[\s_-]*(?:cost|coins?|gold|金币|费|コスト)/i.exec(text ?? "");
-  return m ? Number(m[1]) : null;
 };
 
 const DEFAULT_BASE_SCORE = { 1: 2.0, 2: 3.5, 3: 5.0, 4: 7.0, 5: 9.0 };

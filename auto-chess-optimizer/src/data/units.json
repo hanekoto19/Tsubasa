@@ -1,0 +1,1352 @@
+[
+  {
+    "id": "defector",
+    "detail_id": "e52b47ad218",
+    "name_en": "Defector",
+    "name_ja": "裏切り者",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "glacier"
+    ],
+    "classes": [
+      "shaman"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/4445cc256e3d04f12e2fecd6518ed4e7.png",
+    "base_score": 2
+  },
+  {
+    "id": "egersis_ranger",
+    "detail_id": "e52b47ad599",
+    "name_en": "Egersis Ranger",
+    "name_ja": "エガーシスレンジャー",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "egersis"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/78e7907639f7430791061686d158142d.png",
+    "base_score": 2
+  },
+  {
+    "id": "frost_knight",
+    "detail_id": "e52b47ad240",
+    "name_en": "Frost Knight",
+    "name_ja": "フロストナイト",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "glacier"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/b2caa416d31bb78099aff579f58de687.png",
+    "base_score": 2
+  },
+  {
+    "id": "hawk",
+    "detail_id": "101855090d47",
+    "name_en": "Hawk",
+    "name_ja": "ホーク",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "watcher"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/176966912486244.png",
+    "base_score": 2
+  },
+  {
+    "id": "heaven_bomber",
+    "detail_id": "e52b47ad780",
+    "name_en": "Heaven Bomber",
+    "name_ja": "ヘブンボマー",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "goblin"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/698314cbc9d9535820e6fc8eb2460312.png",
+    "base_score": 2
+  },
+  {
+    "id": "ogre_mage",
+    "detail_id": "e52b47ab944",
+    "name_en": "Ogre Mage",
+    "name_ja": "オーガメイジ",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "kira"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/23acae57369f6cdf9e2bd6fb5887d949.png",
+    "base_score": 2
+  },
+  {
+    "id": "redaxe_chief",
+    "detail_id": "e52b47ac681",
+    "name_en": "Redaxe Chief",
+    "name_ja": "赤斧の酋長",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "cave"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/c38f60f01cc237b92697e71abf9e4a33.png",
+    "base_score": 2
+  },
+  {
+    "id": "resentful_murk",
+    "detail_id": "f0fc5fccbac",
+    "name_en": "Resentful Murk",
+    "name_ja": "怨嗟の闇",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "egersis"
+    ],
+    "classes": [
+      "witcher"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/91d69fffa279783720d58b31aa7eb01a.png",
+    "base_score": 2
+  },
+  {
+    "id": "sky_breaker",
+    "detail_id": "e52b47ac658",
+    "name_en": "Sky Breaker",
+    "name_ja": "スカイブレイカー",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "goblin"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/46e0081df904ae7c47f256d2fa5e39bb.png",
+    "base_score": 2
+  },
+  {
+    "id": "soul_breaker",
+    "detail_id": "e52b47ad7a7",
+    "name_en": "Soul Breaker",
+    "name_ja": "ソウルブレイカー",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "goblin"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/cebd762fded03ffb8fd297c0bfc455d8.png",
+    "base_score": 2
+  },
+  {
+    "id": "stone_spirit",
+    "detail_id": "e52b47ad730",
+    "name_en": "Stone Spirit",
+    "name_ja": "石の精霊",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "spirits"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ae5515538cbe596aaf869d908418658b.png",
+    "base_score": 2
+  },
+  {
+    "id": "taboo_witcher",
+    "detail_id": "e52b47acaf2",
+    "name_en": "Taboo Witcher",
+    "name_ja": "禁忌のウィッチャー",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "witcher"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/c868d1b30f666106ea9ef1577ddbe5c8.png",
+    "base_score": 2
+  },
+  {
+    "id": "the_source",
+    "detail_id": "e52b47ad454",
+    "name_en": "The Source",
+    "name_ja": "ザ・ソース",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "human"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/300c45322e8ea80d4d25fe257d83ab4d.png",
+    "base_score": 2
+  },
+  {
+    "id": "tusk_champion",
+    "detail_id": "e52b47ac74b",
+    "name_en": "Tusk Champion",
+    "name_ja": "牙の勇者",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "beast"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/64b9a49e51be8ebf65f6d235d3f39294.png",
+    "base_score": 2
+  },
+  {
+    "id": "unicorn",
+    "detail_id": "16eaba5e231",
+    "name_en": "Unicorn",
+    "name_ja": "ユニコーン",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "beast"
+    ],
+    "classes": [
+      "druid"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/4780acea37a0d848d97dd54348e33db8.png",
+    "base_score": 2
+  },
+  {
+    "id": "unknown_horror",
+    "detail_id": "100baa36cabb",
+    "name_en": "Unknown Horror",
+    "name_ja": "アンノウンホラー",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "night_demon"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/176422850423440.png",
+    "base_score": 2
+  },
+  {
+    "id": "winter_chiropteran",
+    "detail_id": "e52b47b0144",
+    "name_en": "Winter Chiropteran",
+    "name_ja": "ウィンターキロプテラン",
+    "name_ja_verified": false,
+    "cost": 1,
+    "races": [
+      "dragon",
+      "egersis"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/c7db19e06dca4f824867cfc519678575.png",
+    "base_score": 2
+  },
+  {
+    "id": "abyssal_guard",
+    "detail_id": "e52b47ad2e9",
+    "name_en": "Abyssal Guard",
+    "name_ja": "深淵の衛兵",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "marine"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/cd9adb22e4cba0383af19d2d30445708.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "abyssalcrawler",
+    "detail_id": "e52b47ad42b",
+    "name_en": "Abyssalcrawler",
+    "name_ja": "アビサルクローラー",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "marine"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/06f7a844a7aa71e67ca50bc0a4e73818.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "desperate_doctor",
+    "detail_id": "e52b47ad291",
+    "name_en": "Desperate Doctor",
+    "name_ja": "氷河の呪術医",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "glacier"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ef9faf02429cd206d843ed553cd6a5ea.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "dwarf_sniper",
+    "detail_id": "e52b47aca9f",
+    "name_en": "Dwarf Sniper",
+    "name_ja": "ドワーフスナイパー",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "dwarf"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/4d79cf63bc3a13e271df1dd1fde67949.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "flame_wizard",
+    "detail_id": "e52b47ad4f7",
+    "name_en": "Flame Wizard",
+    "name_ja": "炎の魔術師",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "human"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/d0d1c89e7f9f94dbc7f8cc3ee5c576ed.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "goddess_of_light",
+    "detail_id": "e714b66f227",
+    "name_en": "Goddess of Light",
+    "name_ja": "光の女神",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "divinity"
+    ],
+    "classes": [
+      "priest"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/1107d95ad2322355b001b908617a3570.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "hell_knight",
+    "detail_id": "e52b47ad708",
+    "name_en": "Hell Knight",
+    "name_ja": "ヘルナイト",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/b5a869d05bb80994739762ed6278c62f.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "light_blade",
+    "detail_id": "16eaba5e1a3",
+    "name_en": "Light Blade",
+    "name_ja": "ライトブレード",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/7a7158f45aaeca94d3bd1ce6123c833f.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "phantom_queen",
+    "detail_id": "e52b47ad758",
+    "name_en": "Phantom Queen",
+    "name_ja": "ファントムクイーン",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/b09d238c03b0511e06923905cd858a98.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "ripper",
+    "detail_id": "e52b47ad81f",
+    "name_en": "Ripper",
+    "name_ja": "リッパー",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "goblin"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/931cfca16ee6574973732fe03f7a804d.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "shining_archer",
+    "detail_id": "e52b47afcfe",
+    "name_en": "Shining Archer",
+    "name_ja": "輝きの射手",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/a82b496832ef9ba79b9a236bf949bc1b.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "skull_hunter",
+    "detail_id": "e52b47ad548",
+    "name_en": "Skull Hunter",
+    "name_ja": "スカルハンター",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "cave"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/b2af2f9b94e2cb48f2f762059726edb1.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "soul_devourer",
+    "detail_id": "174432540cf",
+    "name_en": "Soul Devourer",
+    "name_ja": "魂喰らい",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "wizard"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/95aa7f281583ae0eaf9cbf0d060887f3.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "swordman",
+    "detail_id": "e52b47ad571",
+    "name_en": "Swordman",
+    "name_ja": "ソードマン",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "cave"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ca2efcc731fb42886a74ad46cd63315a.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "water_spirit",
+    "detail_id": "e52b47ad7cf",
+    "name_en": "Water Spirit",
+    "name_ja": "水の精霊",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "spirits"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/60bf3168894ab255c6ade6f569000b6b.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "wisper_seer",
+    "detail_id": "16eaba5e1af",
+    "name_en": "Wisper Seer",
+    "name_ja": "ささやきの預言者",
+    "name_ja_verified": false,
+    "cost": 2,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "druid"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/41dddb0b3a25f86b11f80c575bba0eff.png",
+    "base_score": 3.5
+  },
+  {
+    "id": "argali_knight",
+    "detail_id": "e52b47ad4a5",
+    "name_en": "Argali Knight",
+    "name_ja": "アルガリナイト",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "human"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/6da86367a2f1ef4c8f73f8b7efdc811d.png",
+    "base_score": 5
+  },
+  {
+    "id": "berserker",
+    "detail_id": "16eaba5e235",
+    "name_en": "Berserker",
+    "name_ja": "バーサーカー",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "glacier"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/16f02a276901b837c05db2a26d003a8d.png",
+    "base_score": 5
+  },
+  {
+    "id": "bobo",
+    "detail_id": "f105de1774a",
+    "name_en": "Bobo",
+    "name_ja": "ボボ",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "beast"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/0e29186052338bff7cef8a70f6ae677a.png",
+    "base_score": 5
+  },
+  {
+    "id": "eclipse_of_darkness",
+    "detail_id": "f7a6c42ce05",
+    "name_en": "Eclipse of Darkness",
+    "name_ja": "闇の蝕",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "egersis"
+    ],
+    "classes": [
+      "priest"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/170184761761193.png",
+    "base_score": 5
+  },
+  {
+    "id": "evil_knight",
+    "detail_id": "e52b47ab96d",
+    "name_en": "Evil Knight",
+    "name_ja": "邪悪な騎士",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "egersis"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/f9a82dabdf01429f63de03ea33372476.png",
+    "base_score": 5
+  },
+  {
+    "id": "fallen_witcher",
+    "detail_id": "e52b47ad690",
+    "name_en": "Fallen Witcher",
+    "name_ja": "堕落のウィッチャー",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "witcher"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/b9fe89dcd4bf5c675b069ee4561a5798.png",
+    "base_score": 5
+  },
+  {
+    "id": "fortune_teller",
+    "detail_id": "e52b47afdcb",
+    "name_en": "Fortune Teller",
+    "name_ja": "占い師",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "glacier"
+    ],
+    "classes": [
+      "priest"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/d00b52a2b8e614de3b61e9d82d96ad86.png",
+    "base_score": 5
+  },
+  {
+    "id": "gem_artisan",
+    "detail_id": "17acc21aa79",
+    "name_en": "Gem Artisan",
+    "name_ja": "宝石職人",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "civet"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/d3c6762e2f30d15cae8100fff2ecb88c.png",
+    "base_score": 5
+  },
+  {
+    "id": "ghost_kid",
+    "detail_id": "1727d59a49c",
+    "name_en": "Ghost Kid",
+    "name_ja": "ゴーストキッド",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "egersis"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/2fc88ae6f60916f5d1c11303c908b13b.png",
+    "base_score": 5
+  },
+  {
+    "id": "god_of_war",
+    "detail_id": "e52b47aec6b",
+    "name_en": "God of War",
+    "name_ja": "戦神",
+    "name_ja_verified": true,
+    "cost": 3,
+    "races": [
+      "divinity"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/8ba4a8a8d4b09e540030056d621e3cf0.png",
+    "base_score": 5
+  },
+  {
+    "id": "goddess_of_war",
+    "detail_id": "1971fc43d24",
+    "name_en": "Goddess of War",
+    "name_ja": "戦女神",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "ancestor"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/174858459166912.png",
+    "base_score": 5
+  },
+  {
+    "id": "grand_herald",
+    "detail_id": "e52b47b13a8",
+    "name_en": "Grand Herald",
+    "name_ja": "グランドヘラルド",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "divinity"
+    ],
+    "classes": [
+      "wizard"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/b99328961d0542bc0d9e2ce8540798fe.png",
+    "base_score": 5
+  },
+  {
+    "id": "lord_of_sand",
+    "detail_id": "e52b47ad6e0",
+    "name_en": "Lord of Sand",
+    "name_ja": "砂の王",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "beast",
+      "insectoid"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/0a135f2b811b554f7dcfecabca735ba9.png",
+    "base_score": 5
+  },
+  {
+    "id": "mist_phantom_king",
+    "detail_id": "fdb57ef3521",
+    "name_en": "Mist Phantom King",
+    "name_ja": "霧の幻王",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "night_demon"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/174347469928933.png",
+    "base_score": 5
+  },
+  {
+    "id": "penitent_bishop",
+    "detail_id": "fff98fc739e",
+    "name_en": "Penitent Bishop",
+    "name_ja": "贖罪の司教",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "demon",
+      "ancestor"
+    ],
+    "classes": [
+      "priest"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/175904382489231.png",
+    "base_score": 5
+  },
+  {
+    "id": "penitent_bishop_mammon",
+    "detail_id": "fff990c4266",
+    "name_en": "Penitent Bishop·Mammon",
+    "name_ja": "贖罪の司教・マモン",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "ancestor",
+      "demon"
+    ],
+    "classes": [],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/175904581293961.png",
+    "base_score": 5
+  },
+  {
+    "id": "poisonous_worm",
+    "detail_id": "e52b47ad63b",
+    "name_en": "Poisonous Worm",
+    "name_ja": "毒虫",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "insectoid",
+      "beast"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/9023517682e18dc1ce9290424401153c.png",
+    "base_score": 5
+  },
+  {
+    "id": "qin_xuan",
+    "detail_id": "186c50163ff",
+    "name_en": "Qin Xuan",
+    "name_ja": "秦玄",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/167834240990849.png",
+    "base_score": 5
+  },
+  {
+    "id": "shadow_devil",
+    "detail_id": "e52b47ad6b9",
+    "name_en": "Shadow Devil",
+    "name_ja": "シャドウデビル",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ed5d4c4990f5a5877484b26f2598adab.png",
+    "base_score": 5
+  },
+  {
+    "id": "shadowcrawler",
+    "detail_id": "e52b47ad1c8",
+    "name_en": "Shadowcrawler",
+    "name_ja": "シャドウクローラー",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/155005b6fa6337a47de725bcb2316765.png",
+    "base_score": 5
+  },
+  {
+    "id": "thunder_spirit",
+    "detail_id": "e52b47ad7f7",
+    "name_en": "Thunder Spirit",
+    "name_ja": "雷の精霊",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "spirits"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/3d7b892270906f69c4a3139b9406a84e.png",
+    "base_score": 5
+  },
+  {
+    "id": "umbra",
+    "detail_id": "e5991cf27f5",
+    "name_en": "Umbra",
+    "name_ja": "アンブラ",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "dragon",
+      "egersis"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/c966385be7a81a7d71ca925fb6a1900e.png",
+    "base_score": 5
+  },
+  {
+    "id": "venom",
+    "detail_id": "e52b47aca4f",
+    "name_en": "Venom",
+    "name_ja": "ヴェノム",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "dragon"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/843993362ff06222fdb5089cdbbbb2c7.png",
+    "base_score": 5
+  },
+  {
+    "id": "warpwood_sage",
+    "detail_id": "e52b47acb1b",
+    "name_en": "Warpwood Sage",
+    "name_ja": "歪木の賢者",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "druid"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/2cba23bd99eb66eda233e53b7dcd8045.png",
+    "base_score": 5
+  },
+  {
+    "id": "werewolf",
+    "detail_id": "e52b47ad47d",
+    "name_en": "Werewolf",
+    "name_ja": "ウェアウルフ",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "human",
+      "beast"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/8ba7162817b80fbf7e59386d2c68fde5.png",
+    "base_score": 5
+  },
+  {
+    "id": "wind_ranger",
+    "detail_id": "e52b47ad179",
+    "name_en": "Wind Ranger",
+    "name_ja": "ウィンドレンジャー",
+    "name_ja_verified": false,
+    "cost": 3,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/7fdd6c8d5b133b82b2cb2eba5a7b240d.png",
+    "base_score": 5
+  },
+  {
+    "id": "cave_prodigy",
+    "detail_id": "ed1d548b4ea",
+    "name_en": "Cave Prodigy",
+    "name_ja": "洞窟の神童",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "cave"
+    ],
+    "classes": [
+      "priest"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/0836f0714c1f57eaaa4d4306a0991e2a.png",
+    "base_score": 7
+  },
+  {
+    "id": "doom_arbiter",
+    "detail_id": "e52b47ad665",
+    "name_en": "Doom Arbiter",
+    "name_ja": "破滅の裁定者",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/5305f2a51de151e5ac47ed649fefc15a.png",
+    "base_score": 7
+  },
+  {
+    "id": "dragon_knight",
+    "detail_id": "e52b47ad38a",
+    "name_en": "Dragon Knight",
+    "name_ja": "ドラゴンナイト",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "dragon",
+      "human"
+    ],
+    "classes": [
+      "knight"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ae69e8bb4d38ec60b1ee7337a95b59ee.png",
+    "base_score": 7
+  },
+  {
+    "id": "grimtouch",
+    "detail_id": "e52b47b13cf",
+    "name_en": "Grimtouch",
+    "name_ja": "グリムタッチ",
+    "name_ja_verified": true,
+    "cost": 4,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "wizard"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/740afb2bd83e86d5e74ff52ccec720ce.png",
+    "base_score": 7
+  },
+  {
+    "id": "pirate_captain",
+    "detail_id": "e52b47ad4ce",
+    "name_en": "Pirate Captain",
+    "name_ja": "海賊船長",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "human"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/1a77828ea5148f10dded44f397a2104b.png",
+    "base_score": 7
+  },
+  {
+    "id": "razorclaw",
+    "detail_id": "e52b47ad362",
+    "name_en": "Razorclaw",
+    "name_ja": "レイザークロー",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "beast"
+    ],
+    "classes": [
+      "druid"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/1e2228024c836d419bc1498ebc728e21.png",
+    "base_score": 7
+  },
+  {
+    "id": "shining_assassin",
+    "detail_id": "e52b47ad1f0",
+    "name_en": "Shining Assassin",
+    "name_ja": "輝きの暗殺者",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ea1678e598e05f6d941c80b094f2f592.png",
+    "base_score": 7
+  },
+  {
+    "id": "siren",
+    "detail_id": "e52b47ad3b4",
+    "name_en": "Siren",
+    "name_ja": "セイレーン",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "marine"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/16a01f15b7ff900bd404f7a6c6adca31.png",
+    "base_score": 7
+  },
+  {
+    "id": "soul_reaper",
+    "detail_id": "e52b47ad5c1",
+    "name_en": "Soul Reaper",
+    "name_ja": "ソウルリーパー",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "egersis"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/1128f0bb2838b18dfdc184a5cc0cde61.png",
+    "base_score": 7
+  },
+  {
+    "id": "spider_queen",
+    "detail_id": "e7bef0c026b",
+    "name_en": "Spider Queen",
+    "name_ja": "スパイダークイーン",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "insectoid"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/5c9ff8f27528adce027524d4b1866268.png",
+    "base_score": 7
+  },
+  {
+    "id": "storm_shaman",
+    "detail_id": "e52b47ad3db",
+    "name_en": "Storm Shaman",
+    "name_ja": "嵐のシャーマン",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "cave"
+    ],
+    "classes": [
+      "shaman"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/edfdc3369b21db84b92ac2c48724c8b6.png",
+    "base_score": 7
+  },
+  {
+    "id": "thorn_predator",
+    "detail_id": "e7beff4feee",
+    "name_en": "Thorn Predator",
+    "name_ja": "棘の捕食者",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "insectoid"
+    ],
+    "classes": [
+      "assassin"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/322a147b230a082b619996526d040a27.png",
+    "base_score": 7
+  },
+  {
+    "id": "tortola_elder",
+    "detail_id": "e52b47ad51f",
+    "name_en": "Tortola Elder",
+    "name_ja": "トートラの長老",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "human"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/7df0f03ae7a842d2c7699757caa9884b.png",
+    "base_score": 7
+  },
+  {
+    "id": "venomancer",
+    "detail_id": "e52b47ad404",
+    "name_en": "Venomancer",
+    "name_ja": "ヴェノマンサー",
+    "name_ja_verified": false,
+    "cost": 4,
+    "races": [
+      "goblin",
+      "kira"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/c52fb370961bcb346f4f26d01a74d6a9.png",
+    "base_score": 7
+  },
+  {
+    "id": "dark_spirit",
+    "detail_id": "e52b47ad2c1",
+    "name_en": "Dark Spirit",
+    "name_ja": "闇の精霊",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "spirits"
+    ],
+    "classes": [
+      "warlock"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/201e3db9cc27c29d4291b9cd73da10ad.png",
+    "base_score": 9
+  },
+  {
+    "id": "devastator",
+    "detail_id": "e52b47ad269",
+    "name_en": "Devastator",
+    "name_ja": "デバステイター",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "goblin"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/3ab6efb2f77fa0c73148eebcc744bafc.png",
+    "base_score": 9
+  },
+  {
+    "id": "frostblaze_dragon",
+    "detail_id": "e5991b4bd56",
+    "name_en": "Frostblaze Dragon",
+    "name_ja": "霜炎竜",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "dragon"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/0b92a837cd939616c04921183b6e84e1.png",
+    "base_score": 9
+  },
+  {
+    "id": "god_of_thunder",
+    "detail_id": "e52b47aec44",
+    "name_en": "God of Thunder",
+    "name_ja": "雷神",
+    "name_ja_verified": true,
+    "cost": 5,
+    "races": [
+      "divinity"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ebc76ebd76e41191addc33c34237a90d.png",
+    "base_score": 9
+  },
+  {
+    "id": "helicopter",
+    "detail_id": "e52b47acac7",
+    "name_en": "Helicopter",
+    "name_ja": "ヘリコプター",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "dwarf"
+    ],
+    "classes": [
+      "mech"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/bf4331fd08ba9a04e9f804212acbdc32.png",
+    "base_score": 9
+  },
+  {
+    "id": "khan",
+    "detail_id": "edde7225351",
+    "name_en": "Khan",
+    "name_ja": "カーン",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "divinity",
+      "horn"
+    ],
+    "classes": [
+      "druid"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/8be8acbb0a4911c6ac9a3183b3ce6901.png",
+    "base_score": 9
+  },
+  {
+    "id": "rogue_guard",
+    "detail_id": "e52b47afeed",
+    "name_en": "Rogue Guard",
+    "name_ja": "ローグガード",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "demon"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/9ec1d3ced915f4da743cbecf945f3a4a.png",
+    "base_score": 9
+  },
+  {
+    "id": "sacred_lancer",
+    "detail_id": "e8432f6fa43",
+    "name_en": "Sacred Lancer",
+    "name_ja": "聖槍の騎士",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "glacier"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/2b4003c942295b208f341afab8672d21.png",
+    "base_score": 9
+  },
+  {
+    "id": "strange_egg",
+    "detail_id": "e52b47abc41",
+    "name_en": "Strange Egg",
+    "name_ja": "奇妙な卵",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "feathered"
+    ],
+    "classes": [],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/63fae28c72ed7c18ae7fc466f513c249.png",
+    "base_score": 9
+  },
+  {
+    "id": "the_scryer",
+    "detail_id": "e69444fe2ce",
+    "name_en": "The Scryer",
+    "name_ja": "予見者",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "feathered"
+    ],
+    "classes": [
+      "shaman"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/11092be1d36cb732220e87683bd7cf4b.png",
+    "base_score": 9
+  },
+  {
+    "id": "tsunami_stalker",
+    "detail_id": "e52b47ad311",
+    "name_en": "Tsunami Stalker",
+    "name_ja": "津波の追跡者",
+    "name_ja_verified": false,
+    "cost": 5,
+    "races": [
+      "marine"
+    ],
+    "classes": [
+      "hunter"
+    ],
+    "image_url": "https://static.ilongyuan.cn/official_website/e52b47a8c88/ac4480c18f8a03f0444d3b713a90c739.png",
+    "base_score": 9
+  }
+]
