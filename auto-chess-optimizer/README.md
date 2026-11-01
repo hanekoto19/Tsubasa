@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto Chess 最終編成逆算シミュレーター
 
-## Getting Started
+Dragonest版『Auto Chess』で、手持ちの駒(固定枠)から目標枠数(8〜10)の最強編成を逆算するプロトタイプです。
+計算はすべてフロントエンドで完結します。
 
-First, run the development server:
+## 開発
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm test           # Vitest 単体テスト
+npm run typecheck
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 構成
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| パス | 内容 |
+| --- | --- |
+| `src/data/` | ユニット(31体)・種族/クラスシナジーのサンプルデータ |
+| `src/lib/synergyEngine.ts` | 特殊ルール対応のシナジー計算・編成スコア |
+| `src/lib/optimizer.ts` | ルート別ビームサーチによる最終編成の逆算 |
+| `src/app/page.tsx` | シミュレーターUI |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## シナジー計算の適用順
 
-## Learn More
+1. 同名駒(同じID)を除外して種類数をカウント
+2. Wizard(2): 必要数4以上のティアを -1(Wizard自身は対象外)
+3. Demon: 2種類以上で無効。ただし Demon Hunter が2種類以上なら有効
+4. Divinity: Demon 以外の種族シナジーが1つでも発動していれば無効(クラスは可)
+5. Wizard(4): 上記適用後、Wizard 以外の発動シナジーがちょうど1つなら、それを最大ティアに
 
-To learn more about Next.js, take a look at the following resources:
+## 探索
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 1枠ずつ追加するビームサーチ(既定幅80)
+- 「通常」「神維持」「ウィザード4」の3ルートそれぞれの評価関数で上位を残し、特殊編成が枝刈りされないようにしている
+- 方針(バランス / 神編成優先 / ウィザード4優先)に応じてルートごとのビーム幅配分と最終ランキングのボーナスが変わる
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> ユニットデータ・スコア配分はプロトタイプ用のサンプルです。実際のパッチデータに差し替えてください。
